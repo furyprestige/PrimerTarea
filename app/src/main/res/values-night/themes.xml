@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Curso_app" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:textColorPrimary">@color/Black</item>
+        <item name="android:textColorSecondary">@color/Grey</item>
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="MiBotonRaised" parent="Theme.AppCompat.Light">
+        <item name="android:colorButtonNormal">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/White</item>
+        <item name="android:textColor">@color/White</item>
+    </style>
+</resources>

@@ -1,0 +1,39 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.PrimerTarea" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:textColorPrimary">@color/Black</item>
+        <item name="android:textColorSecondary">@color/Grey</item>
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="MiBotonRaised" parent="Theme.AppCompat.Light">
+        <item name="android:colorButtonNormal">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/White</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:textSize">25dp</item>
+    </style>
+    <style name="Textos" parent="Theme.AppCompat.Light">
+        <item name="fontFamily">sans-serif-light</item>
+        <item name="android:textColor">@color/Black</item>
+        <item name="android:textSize">15dp</item>
+    </style>
+    <style name="Encabezados" parent="Theme.AppCompat.Light">
+        <item name="fontFamily">sans-serif-light</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">40dp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="editText" parent="Theme.AppCompat.Light">
+        <item name="fontFamily">sans-serif-light</item>
+        <item name="android:textColor">@color/Black</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:drawablePadding">15dp</item>
+        <item name="android:paddingEnd">15dp</item>
+        <item name="android:paddingStart">15dp</item>
+    </style>
+
+</resources>
