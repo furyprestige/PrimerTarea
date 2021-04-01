@@ -9,14 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PrimerTarea">
-
-        <activity android:name=".ConfirmarDatos"
+        <activity android:name=".InformacionContacto"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".MisContactos"
             android:screenOrientation="portrait">
+            
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ConfirmarDatos"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FormularioContacto"
             android:screenOrientation="portrait">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

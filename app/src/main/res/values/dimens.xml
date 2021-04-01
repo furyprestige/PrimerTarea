@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="verticalMarginCardViews">20dp</dimen>
+    <dimen name="cornerRadiousCardViews">4dp</dimen>
+    <dimen name="ImageViewFotoContactoWidth">200dp</dimen>
+    <dimen name="ImageViewFotoContactoHeight">200dp</dimen>
+    <dimen name="marginBottomInfoContacto">10dp</dimen>
+    <dimen name="CamposFormularioHeight">50dp</dimen>
+    <dimen name="CamposFormularioWidth">380dp</dimen>
+    <dimen name="TextSizeFormularioPreguntas">15dp</dimen>
+    <dimen name="TextSizeEncabezados">40dp</dimen>
+    <dimen name="TextSizeGeneral">20dp</dimen>
+    <dimen name="drawablePaddingPreguntasFormulario">15dp</dimen>
+    <dimen name="paddingEndPreguntasFormulario">15dp</dimen>
+    <dimen name="paddingStartPreguntasFormulario">15dp</dimen>
+    <dimen name="elevacion_Nav_Bar">4dp</dimen>
+    <dimen name="elevacion_cards">1dp</dimen>
+</resources>

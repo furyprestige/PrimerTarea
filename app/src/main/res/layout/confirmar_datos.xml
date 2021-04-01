@@ -96,7 +96,6 @@
             android:layout_height="50dp">
 
         </Space>
-        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -109,11 +108,24 @@
                 android:layout_height="wrap_content"
                 android:text="@string/botonEditarDatos"
                 android:background="@drawable/formbuttons"
-                android:theme="@style/MiBotonRaised">
+                android:theme="@style/MiBotonRaised"
+                android:layout_gravity="center_horizontal">
 
             </Button>
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="30dp">
 
-        </LinearLayout>
+        </Space>
+            <Button
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:text="@string/botonAgregar"
+                android:theme="@style/MiBotonRaised"
+                android:background="@drawable/formbuttons"
+                android:id="@+id/botonAgregarContacto">
+
+            </Button>
 
 
     </LinearLayout>

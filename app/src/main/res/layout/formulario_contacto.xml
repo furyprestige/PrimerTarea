@@ -9,7 +9,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:theme="@style/MiBotonRaised"
-    tools:context=".MainActivity">
+    tools:context=".FormularioContacto">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinator"
@@ -59,8 +59,8 @@
             <EditText
                 android:id="@+id/editTextName"
                 android:ems="10"
-                android:layout_width="380dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/CamposFormularioWidth"
+                android:layout_height="@dimen/CamposFormularioHeight"
                 android:background="@drawable/custom_input"
                 android:theme="@style/editText"
                 android:drawableStart="@drawable/ic_person"
@@ -102,8 +102,8 @@
 
 
             <EditText
-                android:layout_height="50dp"
-                android:layout_width="380dp"
+                android:layout_width="@dimen/CamposFormularioWidth"
+                android:layout_height="@dimen/CamposFormularioHeight"
                 android:id="@+id/editTextPhone"
                 android:ems="10"
                 android:theme="@style/editText"
@@ -122,8 +122,8 @@
 
             <EditText
                 android:id="@+id/editTextEmail"
-                android:layout_width="380dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/CamposFormularioWidth"
+                android:layout_height="@dimen/CamposFormularioHeight"
                 android:theme="@style/editText"
                 android:hint="@string/sEditTextEmail"
                 android:layout_gravity="center_horizontal"
@@ -139,8 +139,8 @@
 
             <EditText
                 android:id="@+id/editTextDetails"
-                android:layout_width="380dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/CamposFormularioWidth"
+                android:layout_height="@dimen/CamposFormularioHeight"
                 android:hint="@string/sEditTextDescripcion"
                 android:inputType="textPersonName"
                 android:layout_gravity="center_horizontal"

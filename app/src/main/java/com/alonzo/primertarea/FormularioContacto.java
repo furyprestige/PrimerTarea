@@ -1,29 +1,27 @@
 package com.alonzo.primertarea;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
+import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Intent;
-import android.inputmethodservice.Keyboard;
 import android.os.Bundle;
-import android.os.strictmode.IntentReceiverLeakedViolation;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class FormularioContacto extends AppCompatActivity {
     private EditText editTextDetails;
     private EditText editTextEmail;
     private EditText editTextName;
@@ -34,11 +32,13 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTexts[];
     private TextWatcher textWatcher;
     ArrayList datos;
+    int[] fecha;
+    int contacto;
     protected View v;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.formulario_contacto);
         editTextDetails = (EditText) findViewById(R.id.editTextDetails);
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextName = (EditText) findViewById(R.id.editTextName);
@@ -46,13 +46,27 @@ public class MainActivity extends AppCompatActivity {
         buttonNext = (Button) findViewById(R.id.buttonNext);
         datePicker = (DatePicker) findViewById(R.id.datePicker);
         linearLayout = findViewById(R.id.linearLayout);
-        editTexts = new EditText[]{editTextName,editTextDetails,editTextPhone,editTextEmail,editTextDetails};
+        editTexts = new EditText[]{editTextName,editTextPhone,editTextEmail,editTextDetails};
+        fecha = new int[3];
         datos = new ArrayList<String>();
+        contacto = getIntent().getIntExtra("contacto",-1);
+
+        if (contacto != -1){
+            llenado(Globals.misContactos.get(getIntent().getIntExtra("contacto",-1)));
+        }
+        buttonNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                comprobarCampos(v);
+            }
+        });
+
+
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                hideKeyboard(MainActivity.this);
+                hideKeyboard(FormularioContacto.this);
                 clearFocus();
             }
         });
@@ -96,12 +110,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void Siguiente() {
         datos.clear();
-        Intent next = new Intent(MainActivity.this,ConfirmarDatos.class);
+        Intent next = new Intent(FormularioContacto.this,ConfirmarDatos.class);
         for (EditText e:editTexts) {
             datos.add(e.getText().toString());
         }
         datos.add(datePicker.getDayOfMonth()+"/"+(((int)datePicker.getMonth())+1)+"/"+datePicker.getYear());
+        fecha[0] = datePicker.getDayOfMonth();
+        fecha[1] = datePicker.getMonth();
+        fecha[2] = datePicker.getYear();
         next.putExtra("datos",datos);
+        next.putExtra("fecha",fecha);
+        next.putExtra("contacto",contacto);
         startActivity(next);
     }
 
@@ -123,10 +142,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void hideKeyboard(MainActivity activity) {
+    public void hideKeyboard(FormularioContacto activity) {
         View view = activity.findViewById(android.R.id.content);
         if (view != null) {
-            InputMethodManager imm = (InputMethodManager) activity.getSystemService(MainActivity.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager) activity.getSystemService(FormularioContacto.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
@@ -146,14 +165,29 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void llenado(Contacto contacto){
+        editTextName.setText(contacto.getName());
+        editTextDetails.setText(contacto.getDescription());
+        editTextEmail.setText(contacto.getEmail());
+        editTextPhone.setText(contacto.getPhone());
+        datePicker.updateDate(contacto.getYear(),contacto.getMonth(),contacto.getDay());
+    }
+
     @Override
     public void onBackPressed(){
         Snackbar.make(findViewById(R.id.linearLayout),getResources().getString(R.string.snackBarSalir),BaseTransientBottomBar.LENGTH_LONG)
                 .setAction(getResources().getString(R.string.salir), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        finishAffinity();
-                        System.exit(0);
+                        if (isTaskRoot()){
+                            finishAffinity();
+                            System.exit(0);
+                        }
+                        else{
+                            onBackPressed();
+                            finish();
+                        }
+
                     }
                 })
                 .setActionTextColor(getColor(R.color.colorPrimary))

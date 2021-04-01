@@ -6,11 +6,14 @@
     <string name="sEditTextEmail">Email:</string>
     <string name="sTituloCalendario">Fecha de nacimiento:</string>
     <string name="sEditTextDescripcion">Descripción:</string>
+    <string name="sToolbar">Mis contactos</string>
     <string name="main1Encabezado">Registro de contacto</string>
     <string name="botonSiguiente">Siguiente</string>
     <string name="main2Encabezado">Confirmar Datos</string>
     <string name="botonEditarDatos">Editar Datos</string>
+    <string name="botonEliminarContacto">Eliminar contacto</string>
     <string name="prohibidoSalir">Saldrás de la app</string>
     <string name="snackBarSalir">¿Deseas Salir?</string>
     <string name="salir">Salir.</string>
+    <string name="botonAgregar">Agregar contacto</string>
 </resources>
