@@ -7,12 +7,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class InformacionContacto extends AppCompatActivity implements Serializable {
+public  class InformacionContacto extends AppCompatActivity implements Serializable {
     Contacto contacto;
     TextView textViewNombreInfoContacto;
     TextView textViewTelefonoInfoContacto;
@@ -21,12 +23,22 @@ public class InformacionContacto extends AppCompatActivity implements Serializab
     TextView textViewDetallesInfoContacto;
     Button botonEditarDatosInfoContacto;
     Button botonEliminar;
+    ImageButton imageButtonBack;
+    Toolbar toolBarInfoContacto;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.informacion_contacto);
         contacto = Globals.misContactos.get(getIntent().getIntExtra("info",0));
         Button botonEdiarDatosInfoContacto = (Button) findViewById(R.id.botonEditarDatosInfoContacto);
+        imageButtonBack = (ImageButton) findViewById(R.id.imageButtonBack);
+        imageButtonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+                finish();
+            }
+        });
         botonEdiarDatosInfoContacto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,4 +74,6 @@ public class InformacionContacto extends AppCompatActivity implements Serializab
         textViewDetallesInfoContacto.setText(textViewDetallesInfoContacto.getText()+" "+contacto.getDescription());
 
     }
+
+
 }

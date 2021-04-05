@@ -5,6 +5,9 @@
     android:layout_width="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical">
+    <include
+        layout="@layout/actionbarinfocontacto">
+    </include>
     <ImageView
         android:id="@+id/imageInfoContacto"
         android:layout_width="@dimen/ImageViewFotoContactoWidth"

@@ -6,17 +6,24 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Parcelable;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -28,6 +35,10 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
     public ContactoAdaptador(ArrayList<Contacto> contactos, Activity activity){
         this.contactos = contactos;
         this.activity = activity;
+    }
+
+    public Activity getActivity(){
+        return this.activity;
     }
 
     @NonNull
@@ -66,15 +77,19 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
                     contacto.quitarFavorito();
                     contactoViewHolder.buttonFavorito.setBackground(activity.getDrawable(R.drawable.ic_star));
                     cantidad.setText(String.valueOf(GlobalVariables.cantFavoritos));
-
                 }
-                else {
-                    contacto.marcarFavorito();
-                    contactoViewHolder.buttonFavorito.setBackground(activity.getDrawable(R.drawable.ic_staryellow));
-                    cantidad.setText(String.valueOf(GlobalVariables.cantFavoritos));
+                else{
+                    if (GlobalVariables.cantFavoritos == 5){
+                        Snackbar.make(v,"Sólo cinco favoritos",BaseTransientBottomBar.LENGTH_SHORT).show();
+
+                    }
+                    else{
+                        contacto.marcarFavorito();
+                        contactoViewHolder.buttonFavorito.setBackground(activity.getDrawable(R.drawable.ic_staryellow));
+                        cantidad.setText(String.valueOf(GlobalVariables.cantFavoritos));
+                    }
                 }
             }
-
         });
     }
 
@@ -89,8 +104,7 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
 
     }
 
-
-    public static class ContactoViewHolder extends RecyclerView.ViewHolder{
+    public class ContactoViewHolder extends RecyclerView.ViewHolder {
         private ImageView imageFotoContacto;
         private TextView textViewNombre;
         private TextView textViewTelefono;
@@ -102,5 +116,6 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
             textViewTelefono = (TextView) itemView.findViewById(R.id.textViewTelefono);
             buttonFavorito = (ImageButton) itemView.findViewById(R.id.buttonFavorito);
         }
+
     }
 }

@@ -9,13 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PrimerTarea">
-        <activity android:name=".InformacionContacto"
-            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".Settings"
+            android:label="@string/title_activity_settings">
+
+        </activity>
+        <activity
+            android:name=".InformacionContacto"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MisContactos"/>
         <activity
             android:name=".MisContactos"
-            android:screenOrientation="portrait">
-            
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".ConfirmarDatos"
             android:screenOrientation="portrait" />

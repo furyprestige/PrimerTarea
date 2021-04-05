@@ -1,5 +1,9 @@
 package com.alonzo.primertarea;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.strictmode.IntentReceiverLeakedViolation;
+
 import java.util.ArrayList;
 import java.util.function.BiPredicate;
 
@@ -75,4 +79,5 @@ public class Contacto {
         this.month = month;
         this.year = year;
     }
+
 }

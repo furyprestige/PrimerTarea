@@ -1,5 +1,6 @@
 package com.alonzo.primertarea;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,11 +10,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.google.android.material.snackbar.BaseTransientBottomBar;
@@ -75,6 +81,21 @@ public class MisContactos extends AppCompatActivity implements Globals {
             }
             recyclerViewContactos.setAdapter(adaptador);
         }
+        toolbarMiToolBar.inflateMenu(R.menu.menu_opciones);
+        toolbarMiToolBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.menuAbout:
+                        Toast.makeText(MisContactos.this,R.string.ToastAbout,Toast.LENGTH_LONG).show();
+                        break;
+                    case R.id.menuSettings:
+                        Intent irSettings = new Intent(MisContactos.this,Settings.class);
+                        startActivity(irSettings);
+                }
+                return false;
+            }
+        });
         botonNuevoContacto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,6 +131,12 @@ public class MisContactos extends AppCompatActivity implements Globals {
     }
 
     @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        getMenuInflater().inflate(R.menu.menu_opciones,menu);
+        super.onCreateContextMenu(menu, v, menuInfo);
+    }
+
+    @Override
     public void onBackPressed(){
         Snackbar.make(findViewById(R.id.recyclerViewContactos),getResources().getString(R.string.snackBarSalir), BaseTransientBottomBar.LENGTH_LONG)
                 .setAction(getResources().getString(R.string.salir), new View.OnClickListener() {
@@ -122,6 +149,7 @@ public class MisContactos extends AppCompatActivity implements Globals {
                 .setActionTextColor(getColor(R.color.colorPrimary))
                 .show();
     }
+
     public void inicializarAdaptador(ContactoAdaptador adaptador){
         if (GlobalVariables.viendoFavoritos){
             if (Globals.misFavoritos.size() != 0){
